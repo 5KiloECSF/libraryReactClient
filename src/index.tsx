@@ -1,15 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+//css
 import './index.css';
-import App from './App';
+import "antd/dist/antd.css";
+
+import App from './app/App';
 import reportWebVitals from './reportWebVitals';
+
+import { Provider } from 'react-redux';
+
+import store  from "./app/store";
+
+
+import {CheckExpiredToken} from "./features/auth/auth.reducer";
+store.dispatch(CheckExpiredToken())
+
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+      <Provider store={store}>
+      <App />
+      </Provider>,
   </React.StrictMode>
 );
 

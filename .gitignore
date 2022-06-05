@@ -11,6 +11,14 @@
 # production
 /build
 
+env
+/env
+/*.env
+/*/env
+*.jar
+.git.bgf*
+bfg*
+.git.bfg-report
 # misc
 .DS_Store
 .env.local
