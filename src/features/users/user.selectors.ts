@@ -1,4 +1,4 @@
-import {UserModel, UserState} from "./users.models";
+import {UserModel, UserState} from "./user.models";
 
 
 export const genresState = (state):UserState => {

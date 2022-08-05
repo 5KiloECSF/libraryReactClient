@@ -3,7 +3,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {AppThunk} from 'app/store'
 import ApiService, {ItemService} from 'api/api.service'
 
-import {ActionError, UserModel, UserState} from "./users.models";
+import {ActionError, UserModel, UserState} from "./user.models";
 import {Query, Status, updateItem} from "../utils";
 import { message } from 'antd';
 

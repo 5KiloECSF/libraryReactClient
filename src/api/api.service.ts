@@ -11,7 +11,7 @@ const ApiService = {
   setHeader() {
     axiosClient.defaults.headers[
         "Authorization"
-        ] = `Bearer ${JwtService.getToken()}`;
+        ] = `Bearer ${JwtService.getToken().token}`;
   },
 
   query(resource: string, params: AxiosRequestConfig | undefined) {

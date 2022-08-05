@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {Table,  Popconfirm, Form, Typography, Space, Tag, Select, Alert, Avatar, message} from 'antd';
+import {Table,  Popconfirm, Form, Typography, Space, Avatar, message} from 'antd';
 import {RootS} from 'app/rootReducer';
 import {fetchUsers, deleteOne} from "../user.reducer";
 import AddEditUser from "./AddUpdate";
 import {setUser} from '../user.reducer'
 
 
-import {UserModel} from "../users.models";
+import {UserModel} from "../user.models";
 
 const ListTable = () => {
     const dispatch = useDispatch()
@@ -78,7 +78,7 @@ const ListTable = () => {
             <AddEditUser isOpen={editModalOpen} onClose={()=>setEditModal(false)} isUpdate={true}/>
 
 
-            {/*<AddQuestion id={editingKey} editMode={true} isOpen={modalOpen} onClose={()=>setModal(false)}/>*/}
+
             <Form form={form} component={false}>
                 <Table
                    bordered

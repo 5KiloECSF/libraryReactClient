@@ -1,4 +1,4 @@
-import {BaseUser, status, UserModel} from "../users/users.models";
+import {BaseUser, status, UserModel} from "../users/user.models";
 
 
 export interface AuthModel extends BaseUser{

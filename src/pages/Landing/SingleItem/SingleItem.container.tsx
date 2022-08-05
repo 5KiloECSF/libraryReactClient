@@ -5,10 +5,12 @@ import {RootS} from "../../../app/rootReducer";
 import React, {useEffect, useState} from "react";
 import {getItem, setId, setItem} from "../../../features/Item/item.reducer";
 
-import {useParams} from "react-router-dom";
+import {useParams, useLocation} from "react-router-dom";
 
 
 const SingleItemContainer =()=> {
+
+
 
     const dispatch = useDispatch();
     const { item, error, loadingStatus, queryType} = useSelector(

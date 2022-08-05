@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {Table, Input, Popconfirm, Form, Typography, Space, Tag, Select, Alert, Avatar, message} from 'antd';
 import {RootS, RootState} from 'app/rootReducer';
-import {fetchGenres, deleteOne} from "../genres.reducer";
+import {fetchGenres, deleteOne} from "../genre.reducer";
 import AddEditGenre from "./AddUpdate";
-import {setGenre} from '../genres.reducer'
+import {setGenre} from '../genre.reducer'
 
 
-import {GenresModel} from "../genresModel";
+import {GenreModel} from "../genre.model";
 
 const ListTable = () => {
     const dispatch = useDispatch()
@@ -52,7 +52,7 @@ const ListTable = () => {
         {
             title: 'operation',
             dataIndex: 'operation',
-            render: (_: any, record: GenresModel) => {
+            render: (_: any, record: GenreModel) => {
                 return (
                     <Space size={"middle"}>
                         <Typography.Link disabled={editModalOpen ===true} onClick={() => {

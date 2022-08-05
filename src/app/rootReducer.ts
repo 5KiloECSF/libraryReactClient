@@ -7,9 +7,9 @@ import {AuthState} from "../features/auth/auth.model";
 import  itemReducer from "../features/Item/item.reducer"
 import {ItemModel, ItemState} from "../features/Item/itemModel";
 
-import  genresReducer from "../features/genres/genres.reducer"
-import {GenresState} from "../features/genres/genresModel";
-import {UserState} from "../features/users/users.models";
+import  genresReducer from "../features/genres/genre.reducer"
+import {GenresState} from "../features/genres/genre.model";
+import {UserState} from "../features/users/user.models";
 import  userReducer from "../features/users/user.reducer"
 
 

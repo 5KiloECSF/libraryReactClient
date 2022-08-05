@@ -17,7 +17,7 @@ import {
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
-import '../../index.css'
+import '../../../index.css'
 
 const solutions = [
   {

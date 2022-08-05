@@ -50,6 +50,7 @@ export interface ActionError{
     error:Error,
     queryType:string
 }
+//removes objects that dont have a value
 export const RemoveEmptyFields = (oldObj) => {
     // log_func("obj=", obj)
     const newObj = {};

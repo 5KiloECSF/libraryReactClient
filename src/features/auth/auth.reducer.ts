@@ -3,7 +3,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {AppThunk} from 'app/store'
 import {AuthService} from 'api/api.service'
 import {ActionError,  AuthState} from "./auth.model";
-import {UserModel} from "../users/users.models";
+import {UserModel} from "../users/user.models";
 
 
 import Routes from "../../Constants/routes";
@@ -11,7 +11,7 @@ import { message } from 'antd';
 import axios from "axios";
 import {LOG_g, Query, Status} from "../utils";
 import jwtDecode from "jwt-decode";
-import {destroyToken, getToken, saveTokenToLocalStorage} from "../../api/jwt.service";
+import {destroyToken, getAuthData, saveTokenToLocalStorage} from "../../api/jwt.service";
 
 
 const initialState: AuthState= {
@@ -70,7 +70,10 @@ export const {
 
 export default auth.reducer
 
-const getResponseData=(value)=> value.data.message.data
+const getResponseData=(value)=> {
+    console.log("the data is", value)
+    return value.data.message.data}
+const getResponseToken=(value)=>value.data._token
 
 export const login = (usr:UserModel, history, checked:boolean): AppThunk => async dispatch => {
     try {
@@ -80,14 +83,18 @@ export const login = (usr:UserModel, history, checked:boolean): AppThunk => asyn
 
         let user:UserModel=getResponseData(usrRes)
         dispatch(loginSuccess(user))
-        axios.defaults.headers.common['Authorization'] = usrRes.data.token;
+        axios.defaults.headers.common['Authorization'] = "bearer "+usrRes.data.token;
         if (checked === true) {
-            saveTokenToLocalStorage(usrRes.data.token, user);
+            saveTokenToLocalStorage(getResponseToken(usrRes), user);
         }
-        if (user.role === "admin") history.push(Routes.ADMIN)
-        else
-            history.push("/");
-        return
+        console.log("user is ", user)
+        if (user.role === "admin") {
+            console.log("user is admin", user)
+            history.push(Routes.ADMIN)
+        }
+        else{history.push("/");}
+
+
 
     } catch (err) {
         dispatch(queryFailure(<ActionError>{error:err.message, queryType:Query.LOGIN}))
@@ -118,7 +125,7 @@ export const logoutUser = () => (dispatch) => {
 
 
 export const CheckExpiredToken=()=>(dispatch) =>{
-    const objectToken = getToken();
+    const objectToken = getAuthData();
 
     dispatch(LOG_g("checking token", objectToken))
     if (objectToken) {
@@ -131,7 +138,7 @@ export const CheckExpiredToken=()=>(dispatch) =>{
                 dispatch(logoutUser());
             } else {
                 dispatch(loginSuccess(user));
-                axios.defaults.headers.common['Authorization'] = objectToken.token;
+                axios.defaults.headers.common['Authorization'] =" "+ objectToken.token;
             }
         }catch (e){
             console.log("e", e)

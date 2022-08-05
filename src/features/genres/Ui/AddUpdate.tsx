@@ -2,7 +2,7 @@ import React,{useEffect, useState} from "react";
 import {Button, Form, Input, message, Modal, Typography, Upload, Spin, InputNumber, Row, Col, Select} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {LoadingOutlined, PlusOutlined} from "@ant-design/icons";
-import {createOne, updateOne} from "../genres.reducer";
+import {createOne, updateOne} from "../genre.reducer";
 import {beforeUpload, getBase64, isJpgOrPng} from "../../../utils/image-util";
 
 import {Query, Status} from "../../utils";
@@ -104,7 +104,7 @@ const AddEditGenre = ({ isOpen, onClose, isUpdate }) => {
     return (
         <>
             <Modal
-                title={isUpdate?"Update Book":"Create Book"}
+                title={isUpdate?"Update Genre":"Create Genre"}
                 visible={isOpen}
                 onOk={handleSubmit}
                 onCancel={onClose}

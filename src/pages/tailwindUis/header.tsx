@@ -81,8 +81,8 @@ function classNames(...classes: string[]) {
 
 export default function Example() {
   return (
-    <Popover className="relative bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <Popover className=" fixed relative bg-white">
+      <div className="fixed bg-white max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
 
           {/*------------------  Logo --------------------------*/}
@@ -232,6 +232,7 @@ const SolutionsDropDown=()=>{
       </Transition>
   )
 }
+
 const MoreDropDown=()=>{
 
   return(
@@ -298,7 +299,7 @@ const ResponsiveMenu=()=>{
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
       >
-        <Popover.Panel focus className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+        <Popover.Panel focus className="absolute bg-white top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
@@ -335,7 +336,7 @@ const ResponsiveMenu=()=>{
 
             </div>
 
-            <div className="py-6 px-5 space-y-6">
+            <div className="bg-white py-6 px-5 space-y-6">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                 {/*------------  Pricing, --------------- */}
                 <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">

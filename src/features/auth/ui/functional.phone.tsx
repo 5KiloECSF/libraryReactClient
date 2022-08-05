@@ -9,7 +9,7 @@ import validator from "validator";
 
 import {LOG_g, Status} from "../../utils";
 
-import {UserModel} from "../../users/users.models";
+import {UserModel} from "../../users/user.models";
 
 import {ComponentRegister} from "./component.Register";
 import { ComponentConfirm } from "./component.confirm";

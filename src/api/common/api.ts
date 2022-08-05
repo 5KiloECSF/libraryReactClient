@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse} from 'axios';
-import {UserModel} from "../../features/users/users.models";
+import {UserModel} from "../../features/users/user.models";
 
 let api: AxiosInstance, isLoggedIn: boolean
 const envBaseUrl = process.env.REACT_APP_API_URL

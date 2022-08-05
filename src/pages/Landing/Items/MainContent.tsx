@@ -7,14 +7,21 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootS} from "../../../app/rootReducer";
 import {fetchItems, setItem} from "../../../features/Item/item.reducer";
 import {ItemsAdminLimit, ItemsListPageLimit} from "../../../Constants/constants";
-import {fetchGenres} from "../../../features/genres/genres.reducer";
+import {fetchGenres} from "../../../features/genres/genre.reducer";
 import {Col, Row} from "antd";
 // import {ProductSorting} from "./components/product sorting";
-
+import {useLocation} from "react-router-dom";
 const MainContent = () => {
     // useEffect(() => {
     //     setFilter()
     // }, [])
+
+    const search = useLocation().search;
+
+    const name = new URLSearchParams(search).get('name');
+    console.log(">>>>>>search =", search, "location=", name)
+    console.log(">>>>>>||search =|", search)
+
     const dispatch = useDispatch()
     const [queryCtr, setQueryCtr]=useState(0)
     const { items, filter} = useSelector(

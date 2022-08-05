@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import Header from './pages/tailwindUis/header'
+
 import All from "./pages/tailwindUis/All";
 
 function App() {
@@ -10,8 +10,6 @@ function App() {
   return (
     <>
       <All/>
-
-      {/* ---------------- */}
 
 
     </>

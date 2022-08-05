@@ -7,10 +7,11 @@ import React, {useEffect, useState} from "react";
 // import Benefit from "./components/Benefit";
 // import Groups from "./container/Groups";
 
-import Banner from "./components/Banner";
-import Genres from "./genres/Genre.container";
-import BestContainer from "./Best/Best.container";
-
+import Banner from "./old/components/Banner";
+import Genres from "./Genre.container";
+import LatestContainer from "./Best/Latest.container";
+import Latest from "./Latest"
+import AvailableBooks from "./availableBooks";
 //Css
 
 const Index =()=>{
@@ -21,17 +22,15 @@ const Index =()=>{
     return (
       <>
         {}
+          <Banner/>
+          {/*<Latest/>*/}
+          <Genres/>
+          <AvailableBooks/>
 
-        <Banner/>
-
-        {/*<Categories/>*/}
-
-        {/*<NewArrivals/>*/}
-        <Genres/>
-
-        {/*<DealOfTheWeek/>*/}
-        {}
-        <BestContainer/>
+          {/*<Categories/>*/}
+          {/*<NewArrivals/>*/}
+          {/*<DealOfTheWeek/>*/}
+          {/*<LatestContainer/>*/}
         {}
         {/*<Benefit/>*/}
         {}

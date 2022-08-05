@@ -2,10 +2,8 @@ import React from "react";
 import {Row, Col, Card} from 'antd';
 // import {LocalImg} from "Constants/constants";
 import {Link} from "react-router-dom";
-import "./horizontal.scss"
-import Scroller from "./scroller/scroller";
 
-function Best({bestItems, filter, selectItem}) {
+function Latest({bestItems, filter, selectItem}) {
 
     const hasItems = bestItems !== undefined && bestItems.length > 0;
 
@@ -53,7 +51,7 @@ function Best({bestItems, filter, selectItem}) {
 
 }
 
-export default Best;
+export default Latest;
 const myComponentStyle = {
 
     width: "300",

@@ -175,6 +175,7 @@ export const fetchItems = (query , setModal, resetPages=true): AppThunk => async
         if(itms.length<ItemsAdminLimit){
             query.lastPageReached=true
         }
+        //for local state mgmt
         dispatch(setFilter(query))
         if(resetPages) dispatch(setFetchItemsSuccess(itms))
         else dispatch(mergeItemsSuccess(itms))

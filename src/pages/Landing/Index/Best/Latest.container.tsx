@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
 
-import Best from "./Best";
+import Latest from "./Latest";
 import {useDispatch, useSelector} from "react-redux";
 import {RootS} from "../../../../app/rootReducer";
-import {ItemFilter} from "../../../../features/Item/itemModel";
-import {fetchItems, fetchLatestItems, setItem} from "../../../../features/Item/item.reducer";
-import {ItemsAdminLimit, ItemsLatestLimit} from "../../../../Constants/constants";
+// import {ItemFilter} from "../../../../features/Item/itemModel";
+import { fetchLatestItems, setItem} from "../../../../features/Item/item.reducer";
+import { ItemsLatestLimit} from "../../../../Constants/constants";
 // import {fetchGenres} from "../../../../features/genres/genres.reducer";
 
-const BestContainer =()=> {
+const LatestContainer =()=> {
 
     const dispatch = useDispatch();
     const { latestItems,item, error, loadingStatus, queryType, filter} = useSelector(
@@ -31,9 +31,9 @@ const BestContainer =()=> {
         dispatch(setItem(item))
     }
     return (
-          <Best bestItems={latestItems} filter={filter} selectItem={selectItem} />
+          <Latest bestItems={latestItems} filter={filter} selectItem={selectItem} />
     );
 
 }
 
-export default BestContainer;
+export default LatestContainer;

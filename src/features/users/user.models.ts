@@ -1,5 +1,5 @@
 import {Status} from "../utils";
-import {GenresModel} from "../genres/genresModel";
+import {GenreModel} from "../genres/genre.model";
 
 
 export interface BaseUser{
@@ -19,7 +19,7 @@ export interface UserModel extends BaseUser{
     password?: string
     idToken?:string
     phone?:string
-    firebaseId?:string
+
 
     role?:string
 

@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootS, RootState} from "../../../app/rootReducer";
 import {Query, Status} from "../../utils";
-import {fetchGenres} from "../../genres/genres.reducer";
+import {fetchGenres} from "../../genres/genre.reducer";
 import {fetchItems} from "../item.reducer";
 import {ItemFilter} from "../itemModel";
 

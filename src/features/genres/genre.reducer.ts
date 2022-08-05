@@ -3,7 +3,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {AppThunk} from 'app/store'
 import ApiService, {ItemService} from 'api/api.service'
 
-import {ActionError, GenresModel, GenresState} from "./genresModel";
+import {ActionError, GenreModel, GenresState} from "./genre.model";
 import {Query, Status, updateItem} from "../utils";
 import { message } from 'antd';
 
@@ -28,27 +28,27 @@ const genres = createSlice({
                 state.loadingStatus=Status.LOADING
                 state.queryType=action.payload
             },
-            fetchGenresSuccess(state, action: PayloadAction<GenresModel[]>) {
+            fetchGenresSuccess(state, action: PayloadAction<GenreModel[]>) {
                 // const { comments, issueId } = action.payload
                 state.genres=action.payload
                 state.loadingStatus = Status.SUCCESS
                 state.queryType=Query.FETCH
                 state.error = null
             },
-            getGenreSuccess(state, action: PayloadAction<GenresModel>) {
+            getGenreSuccess(state, action: PayloadAction<GenreModel>) {
                 state.genre= action.payload
                 state.loadingStatus = Status.SUCCESS
                 state.queryType=Query.FETCH_ONE
                 state.error = null
             },
-           createGenreSuccess(state, action: PayloadAction<GenresModel>) {
+           createGenreSuccess(state, action: PayloadAction<GenreModel>) {
                 // const { comments, issueId } = action.payload
                 state.genres= state.genres.concat(action.payload)
                 state.loadingStatus = Status.SUCCESS
                 state.queryType=Query.CREATE
                 state.error = null
             },
-            updateGenreSuccess(state, action: PayloadAction<GenresModel>){
+            updateGenreSuccess(state, action: PayloadAction<GenreModel>){
 
 
                 const itms=updateItem(state.genres, action.payload)
@@ -72,7 +72,7 @@ const genres = createSlice({
                 state.error = action.payload.error
                 state.queryType=action.payload.queryType
             },
-            setGenre(state, action:PayloadAction<GenresModel>){
+            setGenre(state, action:PayloadAction<GenreModel>){
                 state.genre=action.payload
             }
 
@@ -100,7 +100,7 @@ export const fetchGenres = (): AppThunk => async dispatch => {
         dispatch(queryStart(Query.FETCH))
         const genres = await ApiService.query(genresApiUrl,{})
 
-        let itms:GenresModel[]=getResponseData(genres)
+        let itms:GenreModel[]=getResponseData(genres)
 
         dispatch(fetchGenresSuccess(itms))
 
@@ -113,7 +113,7 @@ export const getOne = (id:string): AppThunk => async dispatch => {
     try {
         dispatch(queryStart(Query.FETCH_ONE))
         const genres = await ApiService.get(genresApiUrl, id)
-        let questns:GenresModel=getResponseData(genres)
+        let questns:GenreModel=getResponseData(genres)
         dispatch(getGenreSuccess(questns))
     } catch (err) {
         dispatch(queryFailure(<ActionError>{error:err.message, queryType:Query.FETCH_ONE}))
@@ -126,7 +126,7 @@ export const createOne = (genre): AppThunk => async dispatch => {
         dispatch(queryStart(Query.CREATE))
         const genres = await ApiService.post(genresApiUrl, genre)
 
-        let itm:GenresModel=getResponseData(genres)
+        let itm:GenreModel=getResponseData(genres)
 
         dispatch(createGenreSuccess(itm))
         message.success('Genre Created Succesfully');
@@ -140,7 +140,7 @@ export const updateOne = (id:string, genre): AppThunk => async dispatch => {
     try {
         dispatch(queryStart(Query.UPDATE))
         const genres = await ApiService.update(genresApiUrl, id, genre)
-        let itm:GenresModel=getResponseData(genres)
+        let itm:GenreModel=getResponseData(genres)
         dispatch(updateGenreSuccess(itm))
         message.success('Genre Updated Successfully');
     } catch (err) {

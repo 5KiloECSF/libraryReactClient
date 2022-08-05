@@ -11,7 +11,7 @@ class Breadcrumbs extends React.Component {
           <li>
             < Link to="groups.html">
               <i className="fa fa-angle-right" aria-hidden="true" />
-              Men's
+
             </Link>
           </li>
           <li className="active">

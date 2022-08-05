@@ -9,7 +9,7 @@ import validator from "validator";
 import Routes from "../../../Constants/routes";
 import {LOG_g, Status} from "../../utils";
 import {LeftCircleOutlined, LockOutlined, PhoneOutlined} from "@ant-design/icons";
-import {UserModel} from "../../users/users.models";
+import {UserModel} from "../../users/user.models";
 import prefixSelector from "./components";
 import {ComponentRegister} from "./component.Register";
 import { ComponentConfirm } from "./component.confirm";

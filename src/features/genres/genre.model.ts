@@ -1,6 +1,6 @@
 
 
-export interface GenresModel {
+export interface GenreModel {
     id: string
     name: string
 
@@ -19,8 +19,8 @@ export interface GenresModel {
 
 export interface GenresState {
 
-    genres?: GenresModel[],
-    genre?: GenresModel | {},
+    genres?: GenreModel[],
+    genre?: GenreModel | {},
 
     loadingStatus: string,
     uploadStatus?:string

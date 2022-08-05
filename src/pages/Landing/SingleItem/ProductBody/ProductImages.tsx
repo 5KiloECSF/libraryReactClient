@@ -25,15 +25,17 @@ function SideImages({path, setImage,  id}) {
 
 function ProductImages ({item}) {
 
-  const [display, setDisplay]= useState(FirebaseImage(item.image, item.image.imageCover));
+  const [display, setDisplay]= useState(`${item.poster}`);
   console.log("item---",item)
   console.log("display---",display)
   console.log("img==",item.image)
   console.log("img--Poster==",item.poster)
+
   const images = item.image.images!== undefined?
     item.image.images.map( img=>
         <SideImages  id={img.id}  setImage={()=>setDisplay(FirebaseImage(item.image, img))}   path={FirebaseImage(item.image, img)}/>
     ):""
+
     return (
       <div className="col-lg-7">
         <div className="single_product_pics">
@@ -41,7 +43,7 @@ function ProductImages ({item}) {
             <div className="col-lg-3 thumbnails_col order-lg-1 order-2">
               <div className="single_product_thumbnails">
                 <ul>
-                  {/*primary image*/}
+                  {/*  ----------- primary image  --------*/}
                   <li onClick={()=>setDisplay(item.poster)}>
                     <SideImage path={item.poster}/>
                   </li>

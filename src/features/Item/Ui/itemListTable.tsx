@@ -9,7 +9,7 @@ import {setItem} from '../item.reducer'
 
 import {Query, Status} from "../../utils";
 import {ItemModel} from "../itemModel";
-import {fetchGenres} from "../../genres/genres.reducer";
+import {fetchGenres} from "../../genres/genre.reducer";
 import {ItemsAdminLimit} from "../../../Constants/constants";
 
 const ItemListTable = () => {

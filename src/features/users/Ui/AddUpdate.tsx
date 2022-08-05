@@ -58,14 +58,10 @@ const AddEditUser = ({ isOpen, onClose, isUpdate }) => {
                 if ("image" in genre) {
                     let imag=genre.image
                     let pImage= {url:`${imag.imagePath + imag.imageCover + imag.suffix}`}
-
                     setImageForm({...imageForm, file:pImage, fileList: [pImage]})
                 }
                 setRemovedImages([])
             }
-
-
-
             // setUrl([...url,{ url: item.image.imageCover}])
         }, [genre]);
 
@@ -78,7 +74,7 @@ const AddEditUser = ({ isOpen, onClose, isUpdate }) => {
         } else if (!("url" in imageForm.file)&& !isJpgOrPng(imageForm.file)) {
             message.error("Book cover can only be JPG/PNG file!");
         } else {
-            formData.append("name", values.name);
+            formData.append("firstName", values.name);
             formData.append("description", values.description)
 
             //------------------------ IMAGE RELATED UPDATES -------------------
@@ -99,13 +95,13 @@ const AddEditUser = ({ isOpen, onClose, isUpdate }) => {
     const uploadButton = (
         <div>
             {loading ? <LoadingOutlined /> : <PlusOutlined />}
-            <div style={{ marginTop: 8 }}>{isUpdate?"Update":"Create Book "}</div>
+            <div style={{ marginTop: 8 }}>{isUpdate?"Update":"Create User "}</div>
         </div>);
 
     return (
         <>
             <Modal
-                title={isUpdate?"Update Book":"Create Book"}
+                title={isUpdate?"Update User":"Create User"}
                 visible={isOpen}
                 onOk={handleSubmit}
                 onCancel={onClose}
@@ -120,12 +116,12 @@ const AddEditUser = ({ isOpen, onClose, isUpdate }) => {
                                 <Col span={12}>
                                     <Form.Item rules={[{required: true}]} name="firstname">
 
-                                        <Input size="large" placeholder="first name" name="firstname"/>
+                                        <Input size="large" placeholder="first name" name="firstName"/>
                                     </Form.Item>
                                 </Col>
                                 <Col span={12}>
                                     <Form.Item rules={[{required: true}]} name="last_name">
-                                        <Input size="large" placeholder="last name" name="last_name"/>
+                                        <Input size="large" placeholder="last name" name="lastName"/>
                                     </Form.Item>
                                 </Col>
                             </Row>

@@ -11,8 +11,7 @@ import {
     InputNumber,
     Row,
     Col,
-    Select,
-    DatePicker
+    Select, Checkbox,
 } from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {LoadingOutlined, PlusOutlined} from "@ant-design/icons";
@@ -26,7 +25,7 @@ const { Option } = Select;
 
 const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
 
-    const { items,item, error, loadingStatus, queryType} = useSelector(
+    const { item, error, loadingStatus, queryType} = useSelector(
         (state:RootS) => state.items
     )
     let validQuery= !!(queryType === Query.CREATE || Query.UPDATE)
@@ -123,6 +122,7 @@ const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
             formData.append("type", values.type)
             formData.append("booksAmount", values.booksAmount)
             formData.append("pageNo", values.pageNo)
+            formData.append("available", values.available)
 
             //------------------------ IMAGE RELATED UPDATES -------------------
             //we check url property to check if the file is the old link or new file added
@@ -169,24 +169,35 @@ const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
                         <Input size="large" placeholder="Book Name" value={"name" in item ? item.name :""}  />
                     </Form.Item>
 
-                    {/*Amount & Page NO*/}
-                    <Form.Item>
-                        <Input.Group>
-                            <Row gutter={12}>
-                                <Col span={12}>
-                                    <Form.Item label={"books amount"} rules={[{required: true}]} name="booksAmount">
-                                        <InputNumber  placeholder="books amount" min={1} max={1000} defaultValue={1} />
-                                    </Form.Item>
-                                </Col>
-                                <Col span={12}>
-                                    <Form.Item label={"books page no"} rules={[{required: true}]} name="pageNo">
-                                        <InputNumber placeholder="books pages" name="pageNo"/>
-                                    </Form.Item>
-                                </Col>
-                            </Row>
-                        </Input.Group>
-                    </Form.Item>
-
+                    {/*Language & type*/}
+                    <Row gutter={16}>
+                        <Col span={12}>
+                            <Form.Item
+                                name="language"
+                                label="Language"
+                                rules={[{ required: true, message: "language is required" }]}
+                            >
+                                <Select placeholder="Please select an owner">
+                                    <Option value="english">English</Option>
+                                    <Option value="amharic">Amharic</Option>
+                                    <Option value="affan oromo">Affan Oromo</Option>
+                                    <Option value="tigrna">Tigrna</Option>
+                                </Select>
+                            </Form.Item>
+                        </Col>
+                        <Col span={12}>
+                            <Form.Item
+                                name="type"
+                                label="Type"
+                                rules={[{ required: true, message: "book type is required" }]}
+                            >
+                                <Select placeholder="Please choose the type">
+                                    <Option value="spiritual">Spiritual</Option>
+                                    <Option value="secular">Secular</Option>
+                                </Select>
+                            </Form.Item>
+                        </Col>
+                    </Row>
                     {/*Genres & tags*/}
                     <Form.Item>
                         <Input.Group>
@@ -203,13 +214,13 @@ const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
                                             // onChange={handleChange}
                                         >
                                             {genres.map(genre=>{
-                                               return <Option key={genre.id} value={genre.name}>{genre.name}</Option>
+                                                return <Option key={genre.id} value={genre.name}>{genre.name}</Option>
                                             })}
                                         </Select>
                                     </Form.Item>
                                 </Col>
                                 <Col span={12}>
-                                    <Form.Item label={"Tags"} rules={[{required: true}]} name="tags">
+                                    <Form.Item label={"Tags"}  name="tags">
                                         <Select
                                             mode="multiple"
                                             allowClear
@@ -227,36 +238,33 @@ const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
                             </Row>
                         </Input.Group>
                     </Form.Item>
+                    {/*Amount & Page NO   available*/}
+                    <Form.Item>
+                        <Input.Group>
+                            <Row gutter={12}>
+                                <Col span={8}>
+                                    <Form.Item label={"amount"} name="booksAmount">
+                                        <InputNumber  placeholder="books amount" min={1} max={1000} defaultValue={1} />
+                                    </Form.Item>
+                                </Col>
+                                <Col span={8}>
+                                    <Form.Item label={"page no"}  name="pageNo">
+                                        <InputNumber placeholder="books pages" name="pageNo"/>
+                                    </Form.Item>
+                                </Col>
+                                <Col span={8}>
+                                    <Form.Item valuePropName="checked" name="available">
+                                        <Checkbox name="available" defaultChecked={true} >book Available</Checkbox>
+                                    </Form.Item>
 
-                    {/*Language & type*/}
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item
-                                name="language"
-                                label="Language"
-                                rules={[]}
-                            >
-                                <Select placeholder="Please select an owner">
-                                    <Option value="english">English</Option>
-                                    <Option value="amharic">Amharic</Option>
-                                    <Option value="affan oromo">Affan Oromo</Option>
-                                    <Option value="tigrna">Tigrna</Option>
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="type"
-                                label="Type"
-                                rules={[]}
-                            >
-                                <Select placeholder="Please choose the type">
-                                    <Option value="spiritual">Spiritual</Option>
-                                    <Option value="secular">Secular</Option>
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                    </Row>
+                                </Col>
+                            </Row>
+                        </Input.Group>
+                    </Form.Item>
+
+
+
+
 
 
 

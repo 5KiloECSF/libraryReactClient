@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {LocalImg} from "../../../../Constants/constants";
+import {LocalImg} from "../../../../../Constants/constants";
 
 const CategoriesItem  =({setFilter, category})=> {
 

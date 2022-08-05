@@ -2,9 +2,9 @@ import React from "react";
 import {Link} from "react-router-dom";
 import { NetworkImage} from "Constants/constants";
 
-import LoadMore from "./loadMore";
 
-function Groups ({groups, filter}) {
+
+function Groups ({groups}) {
     return (
       <div className="blogs">
         <div className="container">
@@ -33,7 +33,7 @@ function Groups ({groups, filter}) {
 
         </div>
 
-          <LoadMore filter={filter} />
+
       </div>
     );
 

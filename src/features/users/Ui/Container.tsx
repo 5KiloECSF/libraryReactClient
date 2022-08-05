@@ -24,7 +24,7 @@ export const UsersContainer=() =>{
                         onClick={() => setModal(true)}
                     >
                         <PlusCircleTwoTone />
-                        Add Genre
+                        Add User
                     </Button>
                 </Col>
 

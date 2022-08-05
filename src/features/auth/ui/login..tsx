@@ -25,7 +25,8 @@ const Login = () => {
     rememberMe: false,
     locError: "",
   });
-  const {  rememberMe, locError } = credentials;
+  const [rememberMe, setRememberMe]=useState(true)
+  const {   locError } = credentials;
 
   useEffect(() => {
     setCredentials({ email: "", password: "", rememberMe: false, locError: "" });
@@ -36,6 +37,7 @@ const Login = () => {
     setCredentials({ ...credentials, locError: msg });
   };
   const handleChecked = (e) => {
+    setRememberMe(e.target.checked )
     setCredentials({ ...credentials, rememberMe: e.target.checked });
   };
 
@@ -45,7 +47,11 @@ const Login = () => {
     const data={
       phone: "+251"+values.phone,
       password: values.password,
+      rememberMe:values.rememberMe
     }
+    // setRememberMe(values.rememberMe)
+    // console.log("rememberMe==", values.rememberMe)
+
     if (validator.isEmpty(values.phone) || validator.isEmpty(values.password)) {
       handleErrors("All fields are required!");
       return;
@@ -134,14 +140,8 @@ function LoginUi(props: { onFinish: (values) => void, locError: string, onChange
           >
             <Input.Password size="large" placeholder="Password"/>
           </Form.Item>
-          {/* eeeeeeeeeeeeeeeeee ===== Errors ======== ------------*/}
 
-          {props.locError ? <Text type="danger">{props.locError}</Text> : ""}
-          {authStatus.error ? <Text type="danger">{authStatus.error.message}</Text> : ""}
-          {/*{status}*/}
-
-
-          <Form.Item>
+          <Form.Item >
             <div
                 style={{
                   display: "flex",
@@ -151,8 +151,8 @@ function LoginUi(props: { onFinish: (values) => void, locError: string, onChange
                 }
                 }
             >
-              <Form.Item>
-                <Checkbox onChange={props.onChange}>Remember me</Checkbox>
+              <Form.Item name="rememberMe">
+                <Checkbox defaultChecked={true} onChange={props.onChange}>Remember me</Checkbox>
               </Form.Item>
 
               {/*===================---------------  Submit Button ------------------===========*/}
