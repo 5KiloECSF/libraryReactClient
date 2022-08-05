@@ -120,8 +120,8 @@ const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
             formData.append("description", values.description)
             formData.append("language", values.language)
             formData.append("type", values.type)
-            formData.append("booksAmount", values.booksAmount)
-            formData.append("pageNo", values.pageNo)
+            formData.append("booksAmount", values.booksAmount||1)
+            formData.append("pageNo", values.pageNo||100)
             formData.append("available", values.available)
 
             //------------------------ IMAGE RELATED UPDATES -------------------
