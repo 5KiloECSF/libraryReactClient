@@ -82,8 +82,11 @@ const ItemListTable = () => {
 
         },
         {
-            title: 'amount',
-            dataIndex: 'booksAmount'
+            title: 'is book available',
+            dataIndex: 'available',
+            render:available=>(
+                <Tag color={available==="true"?"green":"magenta"}>{available}</Tag>
+            )
         },
         {
             title: 'operation',
@@ -92,7 +95,7 @@ const ItemListTable = () => {
                 return (
                     <Space size={"middle"}>
                         <Typography.Link disabled={editModalOpen ===true} onClick={() => {
-                            message.info("hi");
+                            // message.info("hi");
                             // message.info(`ss-${JSON.stringify(record)}`);
                             // message.info(record);
                             dispatch(setItem(record));
