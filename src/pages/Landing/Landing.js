@@ -3,8 +3,7 @@ import { Switch, Route,  useRouteMatch} from 'react-router-dom'
 // import Header from "./components/Header/Header";
 import HamburgerMenu from "./components/Header/HamburgerMenu";
 
-// import Newsletter from "./components/Footer/Newsletter";
-import Footer from "./components/Footer/Footer";
+
 import Index from "./Index/Index";
 import Items from "./Items";
 import SingleItem from "./SingleItem/SingleItem.container";
@@ -16,7 +15,7 @@ import './assets/css/bootstrap.min.css'
 import './assets/css/main_styles.css'
 import './assets/css/responsive.css'
 import './assets/css/categories_responsive.css'
-// import Example from "../TailwindLanding/eg2";
+
 
 
 function Landing () {

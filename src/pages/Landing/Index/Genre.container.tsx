@@ -85,7 +85,7 @@ const GenresItem = ({genre, setFilter}) => {
     return (
 
         <>
-            <Link onClick={() => setFilter(genre.id)} to={"/items"}>
+            <Link onClick={() => setFilter(genre.id)} to={`/items?genres=${genre.id}`}>
                 <div className="p-1 flex flex-col items-center  rounded-xl justify-center  items-center hover:shadow-lg ease-in duration-300">
                     <img
                         className=" p-1 shadow-xl shadow-gray-400 rounded-full hover:scale-110 ease-in duration-300 catagory-im"

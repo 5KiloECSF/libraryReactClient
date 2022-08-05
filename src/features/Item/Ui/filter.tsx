@@ -1,4 +1,4 @@
-import {Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Space, Spin} from 'antd';
+import {Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Space, Spin, Switch} from 'antd';
 import {FilterTwoTone, PlusOutlined} from '@ant-design/icons';
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
@@ -33,7 +33,11 @@ export const FilterDrawer =()=> {
    const onClose = () => {
         setDrawer(false)
     };
-
+    const [switc, setSwitch] = useState(false);
+    const onSwitchChange = (e) => {
+        console.log('switch checked', e);
+        setSwitch(e);
+    };
     const handleSubmit = (values) => {
         const query:ItemFilter= {
             ...filter,
@@ -41,7 +45,9 @@ export const FilterDrawer =()=> {
             type: values.type,
             genres: values.genres,
             page:1,
-            lastPageReached: false
+            lastPageReached: false,
+            available:switc,
+
         }
         dispatch(fetchItems(query, onClose))
     }
@@ -114,7 +120,7 @@ export const FilterDrawer =()=> {
                             </Col>
                         </Row>
 
-                        {/*Genres & date*/}
+                        {/*Genres & availabel*/}
                         <Row gutter={16}>
                             <Col span={12}>
                                 <Form.Item label={"Genres"} rules={[]} name="genres">
@@ -132,18 +138,12 @@ export const FilterDrawer =()=> {
                                     </Select>
                                 </Form.Item>
                             </Col>
-                            <Col span={12}>
-                                <Form.Item
-                                    name="dateTime"
-                                    label="DateTime"
-                                    rules={[]}
-                                >
-                                    <DatePicker.RangePicker
-                                        style={{ width: '100%' }}
-                                        getPopupContainer={trigger => trigger.parentElement}
-                                    />
-                                </Form.Item>
-                            </Col>
+                            <Form.Item valuePropName="checked"
+                                       label="only available"
+                                       name="available"
+                            >
+                                <Switch checked={switc} onChange={onSwitchChange} />
+                            </Form.Item>
                         </Row>
 
                         {/* -- ===== Submit Button ```````````*/}

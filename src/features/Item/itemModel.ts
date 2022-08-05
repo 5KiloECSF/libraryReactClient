@@ -6,6 +6,7 @@ export interface ItemFilter{
     language?: string
     type?:string
     tags?:string[]
+    available?:boolean
 
     authors?:string
     donorsID?:string //for Admin-- books.donors.id in []

@@ -10,8 +10,8 @@ import {LocalImg} from "../../Constants/constants";
 const Navbar = () => {
     const [nav, setNav] = useState(false);
     const [shadow, setShadow] = useState(false);
-    const [navBg, setNavBg] = useState("#ecf0f3");
-    const [linkColor, setLinkColor] = useState("#1f2937");
+    // const [navBg, setNavBg] = useState("#ecf0f3");
+    // const [linkColor, setLinkColor] = useState("#1f2937");
 
     const styles = {
         navBarLink: "ml-10 text-sm uppercase hover:border-b",
@@ -36,7 +36,7 @@ const Navbar = () => {
             {/* Desktop Navbar */}
             <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
                 <Link to="/">
-                    <div className="h-full overflow-hidden"><img className="h-full h-20 w-40 overflow-hidden" src={LocalImg("logo1.png")} alt="/"/></div>
+                    <div className="h-20 overflow-hidden"><img className=" h-20 w-40 overflow-hidden" src={LocalImg("logo1.png")} alt="/"/></div>
                 </Link>
                 <div className="pr-10">
                     <ul className="hidden md:flex">
@@ -71,7 +71,7 @@ const Navbar = () => {
                         {/* mobile logo & close */}
                         <div className="flex w-full items-center justify-between">
                             <Link to="/">
-                                <div className="h-full overflow-hidden"><img className="h-full h-20 w-40 overflow-hidden" src={LocalImg("logo1.png")} alt="/"/></div>
+                                <div className="h-20 overflow-hidden"><img className="h-20 w-40 overflow-hidden" src={LocalImg("logo1.png")} alt="/"/></div>
                             </Link>
                             {/* close button */}
                             <div

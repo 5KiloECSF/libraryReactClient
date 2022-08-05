@@ -35,7 +35,7 @@ const Example2 = lazy(()=> import("../pages/tailwindUis/TailwindLanding/eg2"));
 
 const LoginPage = lazy(()=> import("../features/auth/ui/login."));
 const SignUpPage = lazy(()=> import("../features/auth/ui/registerWIthPhone"));
-const Dashboard = lazy(()=> import('../pages/admin/index'));
+const Dashboard = lazy(()=> import('../pages/admin'));
 const NotFoundPage = lazy(()=> import("../components/not-found"));
 const Landing = lazy(()=> import("../pages/Landing/Landing"));
 

@@ -6,7 +6,7 @@ import ApiService from "../../../api/api.service";
 
 const availableLimit=15;
 const getbooks = async ({pageParam = 1}) => {
-    const books = await ApiService.query(`books?limit=${availableLimit}&page=${pageParam}`, {});
+    const books = await ApiService.query(`books?limit=${availableLimit}&page=${pageParam}&available=true`, {});
     return books.data.value;
 };
 const AvailableBooks = () => {

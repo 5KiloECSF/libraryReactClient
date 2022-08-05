@@ -66,19 +66,17 @@ export const ItemDashboard=() =>{
                 <Col>
                     <FilterDrawer  />
                 </Col>
-            <Col>
-                <Tag closable onClose={()=>console.log("hey")}>
-                    Tag 2
-                </Tag>
-                 <Tag closable onClose={()=>console.log("hey")}>
-                    Tag 2
-                </Tag>
-                 <Tag closable onClose={()=>console.log("hey")}>
-                    Tag 2
-                </Tag>
-
-
-            </Col>
+            {/*<Col>*/}
+            {/*    <Tag closable onClose={()=>console.log("hey")}>*/}
+            {/*        Tag 2*/}
+            {/*    </Tag>*/}
+            {/*     <Tag closable onClose={()=>console.log("hey")}>*/}
+            {/*        Tag 2*/}
+            {/*    </Tag>*/}
+            {/*     <Tag closable onClose={()=>console.log("hey")}>*/}
+            {/*        Tag 2*/}
+            {/*    </Tag>*/}
+            {/*</Col>*/}
 
         </Row>
 

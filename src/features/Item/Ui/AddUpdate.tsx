@@ -123,6 +123,7 @@ const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
             formData.append("booksAmount", values.booksAmount||1)
             formData.append("pageNo", values.pageNo||100)
             formData.append("available", values.available)
+            formData.append("genres", values.genres)
 
             //------------------------ IMAGE RELATED UPDATES -------------------
             //we check url property to check if the file is the old link or new file added
@@ -180,8 +181,8 @@ const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
                                 <Select placeholder="Please select an owner">
                                     <Option value="english">English</Option>
                                     <Option value="amharic">Amharic</Option>
-                                    <Option value="affan oromo">Affan Oromo</Option>
-                                    <Option value="tigrna">Tigrna</Option>
+                                    {/*<Option value="affan oromo">Affan Oromo</Option>*/}
+                                    {/*<Option value="tigrna">Tigrna</Option>*/}
                                 </Select>
                             </Form.Item>
                         </Col>
@@ -204,7 +205,7 @@ const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
                             {/*This works in 24 partitions*/}
                             <Row gutter={12}>
                                 <Col span={12}>
-                                    <Form.Item label={"Genres"} rules={[{required: true}]} name="genre">
+                                    <Form.Item label={"Genres"} rules={[{required: true}]} name="genres">
                                         <Select
                                             // mode="multiple"
                                             // allowClear
@@ -214,7 +215,7 @@ const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
                                             // onChange={handleChange}
                                         >
                                             {genres.map(genre=>{
-                                                return <Option key={genre.id} value={genre.name}>{genre.name}</Option>
+                                                return <Option key={genre.id} value={genre.id}>{genre.name}</Option>
                                             })}
                                         </Select>
                                     </Form.Item>

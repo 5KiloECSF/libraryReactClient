@@ -22,6 +22,10 @@ export interface UserModel extends BaseUser{
 
 
     role?:string
+    userImages?:{
+        id?:string
+        profile?:string
+    }
 
     totalDonatedBooks?:number
     totalPledgedBooks?:number
