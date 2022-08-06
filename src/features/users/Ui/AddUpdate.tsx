@@ -65,7 +65,11 @@ const AddEditUser = ({ isOpen, onClose, isUpdate }) => {
             // setUrl([...url,{ url: item.image.imageCover}])
         }, [genre]);
 
+    const cleanup=()=>{
+        onClose()
+        formRef.resetFields()
 
+    }
     const handleSubmit = (values) => {
         const formData = new FormData();
         console.log("values=", values)
@@ -85,9 +89,9 @@ const AddEditUser = ({ isOpen, onClose, isUpdate }) => {
             }
 
             if ("id" in genre && isUpdate){
-                dispatch(updateOne(genre.id, formData))
+                dispatch(updateOne(genre.id, formData, cleanup))
             }else if(!isUpdate){
-                dispatch(createOne(formData))
+                dispatch(createOne(formData, cleanup))
             }
         }
     };

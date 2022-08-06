@@ -68,7 +68,10 @@ const AddEditGenre = ({ isOpen, onClose, isUpdate }) => {
             // setUrl([...url,{ url: item.image.imageCover}])
         }, [genre]);
 
-
+    const cleanUp=()=>{
+        onClose()
+        formRef.resetFields()
+    }
     const handleSubmit = (values) => {
         const formData = new FormData();
         console.log("values=", values)
@@ -88,9 +91,9 @@ const AddEditGenre = ({ isOpen, onClose, isUpdate }) => {
             }
 
             if ("id" in genre && isUpdate){
-                dispatch(updateOne(genre.id, formData))
+                dispatch(updateOne(genre.id, formData, cleanUp))
             }else if(!isUpdate){
-                dispatch(createOne(formData))
+                dispatch(createOne(formData, cleanUp))
             }
         }
     };

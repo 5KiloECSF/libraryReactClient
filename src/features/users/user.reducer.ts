@@ -122,7 +122,7 @@ export const getOne = (id:string): AppThunk => async dispatch => {
 }
 
 
-export const createOne = (user): AppThunk => async dispatch => {
+export const createOne = (user, cleanUp): AppThunk => async dispatch => {
     try {
         dispatch(queryStart(Query.CREATE))
         const users = await ApiService.post(usersApiUrl, user)
@@ -130,19 +130,21 @@ export const createOne = (user): AppThunk => async dispatch => {
 
         dispatch(createUserSuccess(itm))
         message.success('User Created Succesfully');
+        cleanUp()
     } catch (err) {
         dispatch(queryFailure(<ActionError>{error:err.message, queryType:Query.CREATE}))
         message.error(err.message);
     }
 }
 
-export const updateOne = (id:string, user): AppThunk => async dispatch => {
+export const updateOne = (id:string, user, cleanUp): AppThunk => async dispatch => {
     try {
         dispatch(queryStart(Query.UPDATE))
         const users = await ApiService.update(usersApiUrl, id, user)
         let itm:UserModel=getResponseData(users)
         dispatch(updateUserSuccess(itm))
         message.success('User Updated Successfully');
+        cleanUp()
     } catch (err) {
         dispatch(queryFailure(<ActionError>{error:err.message, queryType:Query.UPDATE}))
         message.error(err.message);

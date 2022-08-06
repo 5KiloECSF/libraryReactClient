@@ -121,7 +121,7 @@ export const getOne = (id:string): AppThunk => async dispatch => {
 }
 
 
-export const createOne = (genre): AppThunk => async dispatch => {
+export const createOne = (genre, cleanUp): AppThunk => async dispatch => {
     try {
         dispatch(queryStart(Query.CREATE))
         const genres = await ApiService.post(genresApiUrl, genre)
@@ -130,19 +130,21 @@ export const createOne = (genre): AppThunk => async dispatch => {
 
         dispatch(createGenreSuccess(itm))
         message.success('Genre Created Succesfully');
+        cleanUp()
     } catch (err) {
         dispatch(queryFailure(<ActionError>{error:err.message, queryType:Query.CREATE}))
         message.error(err.message);
     }
 }
 
-export const updateOne = (id:string, genre): AppThunk => async dispatch => {
+export const updateOne = (id:string, genre, cleanUp): AppThunk => async dispatch => {
     try {
         dispatch(queryStart(Query.UPDATE))
         const genres = await ApiService.update(genresApiUrl, id, genre)
         let itm:GenreModel=getResponseData(genres)
         dispatch(updateGenreSuccess(itm))
         message.success('Genre Updated Successfully');
+        cleanUp()
     } catch (err) {
         dispatch(queryFailure(<ActionError>{error:err.message, queryType:Query.UPDATE}))
         message.error(err.message);

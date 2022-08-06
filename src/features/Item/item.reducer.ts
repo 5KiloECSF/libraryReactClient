@@ -198,7 +198,7 @@ export const getItem = (id:string): AppThunk => async dispatch => {
 }
 
 
-export const createItems = (item): AppThunk => async dispatch => {
+export const createItems = (item, cleanUp): AppThunk => async dispatch => {
     try {
         dispatch(queryStart(Query.CREATE))
         const items = await ApiService.post(bookApiUrl, item)
@@ -208,13 +208,14 @@ export const createItems = (item): AppThunk => async dispatch => {
         dispatch(createItemsSuccess(itm))
 
         message.success('Book Created Succesfully');
+        cleanUp()
     } catch (err) {
         dispatch(queryFailure(<ActionError>{error:err.message, queryType:Query.CREATE}))
         message.error(err.message);
     }
 }
 
-export const updateItems = (id:string, item): AppThunk => async dispatch => {
+export const updateItems = (id:string, item, cleanUp): AppThunk => async dispatch => {
     try {
         dispatch(queryStart(Query.UPDATE))
         const items = await ApiService.update(bookApiUrl, id, item)
@@ -229,6 +230,7 @@ export const updateItems = (id:string, item): AppThunk => async dispatch => {
 
         dispatch(updateItemsSuccess(itm))
         message.success('Book Updated Successfully');
+        cleanUp()
     } catch (err) {
         dispatch(queryFailure(<ActionError>{error:err.message, queryType:Query.UPDATE}))
         message.error(err.message);

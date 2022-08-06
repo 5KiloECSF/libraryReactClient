@@ -108,6 +108,10 @@ const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
         // console.log("-----Remove--------",file)
     }
 
+    const cleanUp=()=>{
+        onClose()
+        formRef.resetFields()
+    }
     const handleSubmit = (values) => {
         const formData = new FormData();
         console.log("values=", values)
@@ -142,9 +146,9 @@ const AddEditBook = ({ isOpen, onClose, isUpdate }) => {
             })
 
             if ("id" in item && isUpdate){
-                dispatch(updateItems(item.id, formData))
+                dispatch(updateItems(item.id, formData, cleanUp))
             }else if(!isUpdate){
-                dispatch(createItems(formData))
+                dispatch(createItems(formData, cleanUp))
             }
         }
     };
