@@ -73,6 +73,7 @@ const AvailableBooks = () => {
             </div>
             <div>
                 <button
+                    className="bg-red-400"
                     ref={ref}
                     onClick={() => fetchNextPage()}
                     disabled={!hasNextPage || isFetchingNextPage}
@@ -81,7 +82,7 @@ const AvailableBooks = () => {
                         ? 'Loading more...'
                         : hasNextPage
                             ? 'Load Newer'
-                            : 'Nothing more to load'}
+                            : '---'}
                 </button>
             </div>
         </div>

@@ -44,32 +44,18 @@ const GenreContainer = () => {
         dispatch(fetchItems(query, set))
 
     }
-    const gen=[
-        {id:1, name:"one", poster:"https://picsum.photos/id/1000/300/300"},
-        {id:2, name:"one", poster:"https://picsum.photos/id/1000/300/300"},
-        {id:3, name:"one", poster:"https://picsum.photos/id/1000/300/300"},
-        {id:4, name:"one", poster:"https://picsum.photos/id/1000/300/300"},
 
-    ]
     return (
         <div className=" m-2 px-6 mx-4">
 
             <div className="mx-auto flex flex-col items-center  justify-center h-full">
                 <h2> Genres</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 justify-center  lg:grid-cols-7 gap-8">
+                <div className="grid grid-cols-2 items-center sm:grid-cols-3 md:grid-cols-5 justify-around  lg:grid-cols-7 gap-8">
                     {
                         genres.map(genre =>
                             <GenresItem
                                 key={genre.id}
                                 genre={genre}
-                                setFilter={setFilter}
-                            />
-                        )
-                    }{
-                        gen.map((g, i) =>
-                            <GenresItem
-                                key={g.id}
-                                genre={g}
                                 setFilter={setFilter}
                             />
                         )
