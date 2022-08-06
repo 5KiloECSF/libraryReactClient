@@ -17,14 +17,10 @@ class Banner extends React.Component {
               <div className="main_slider_content">
                 <p>A reader lives a thousand lives before he dies.<br/>  The man who never reads lives only one!  </p>
 
-                <div className="red_button shop_now_button">
-                  < Link to="#">view</Link>
 
-                </div>
               </div>
             </div>
-            <p>A reader lives a thousand lives before he dies.<br/>  The man who never reads lives only one!  </p>
-+
+
           </div>
         </div>
       </div>
