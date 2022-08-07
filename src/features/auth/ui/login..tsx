@@ -105,7 +105,7 @@ function LoginUi(props: { onFinish: (values) => void, locError: string, onChange
     <div className="box-shadow" style={{width: 400, padding: 20}}>
       <Card hoverable style={{width: "500px"}}>
         <Typography.Text>
-          <LeftCircleOutlined/> <Link to="/admin">Home</Link>
+          <LeftCircleOutlined/> <Link to="/">Home</Link>
         </Typography.Text>
         <div style={{display: "flex", justifyContent: "center"}}>
 
@@ -172,9 +172,9 @@ function LoginUi(props: { onFinish: (values) => void, locError: string, onChange
 
           <Form.Item>
 
-            <Typography.Text>
-              Dont have account? <Link to="/signup">sign up</Link>
-            </Typography.Text>
+            {/*<Typography.Text>*/}
+            {/*  Dont have account? <Link to="/signup">sign up</Link>*/}
+            {/*</Typography.Text>*/}
           </Form.Item>
         </Form>
       </Card>

@@ -79,7 +79,7 @@ export function ComponentRegister(props: { onFinish: (values) => void, error: st
                 </Form.Item>
 
 
-                -------------------password ----------------
+                {/*-------------------password ----------------*/}
                 <Form.Item
                     name="password"
                     rules={[{required: true, message: "Please input your password!"}]}
